@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>トリッププランナー</h1>
+
+  <h2>ロケーションを追加</h2>
+  <form action="/add_location" method="post">
+    <label for="name">名前:</label>
+    <input type="text" id="name" name="name"><br>
+    <label for="category">カテゴリ:</label>
+    <input type="text" id="category" name="category"><br>
+    <input type="submit" value="追加">
+  </form>
+
+  <h2>追加したロケーション</h2>
+  <ul>
+    {% for location in locations %}
+      <li>{{ location[0] }} ({{ location[1] }}) <button onclick="deleteLocation({{ loop.index0 }})">削除</button></li>
+    {% endfor %}
+  </ul>
+
+  <form action="/create_plan" method="post">
+    <input type="submit" value="プランを作成">
+  </form>
+
+  <script>
+    function deleteLocation(index) {
+      fetch('/delete_location', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: 'index=' + index
+      }).then(() => {
+        location.reload();
+      });
+    }
+  </script>
+{% endblock %}

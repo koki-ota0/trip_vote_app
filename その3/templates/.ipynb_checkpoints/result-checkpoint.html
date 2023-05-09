@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+    <title>投票結果</title>
+    <style>
+        /* 地図を囲む div 要素に余白を追加する */
+        div#map-container {
+            margin: 30px;
+        }
+        /* 「もう一度投票する」のスタイル */
+        .vote-again {
+            font-size: 24px; /* テキストサイズを大きく */
+            text-align: center; /* 中央寄せにする */
+            margin-top: 20px; /* 上部に50ピクセルの余白を設定 */
+        }
+    </style>
+</head>
+<body>
+    <h1>投票結果</h1>
+    <p><span style="font-size: 1.5em;">最も人気のあるエリアは、<span style="color:red; font-weight:bold;">{{ chosen_place }}</span>です。</span></p>
+    <div id="map-container">
+        {{ map | safe }}
+    </div>
+    <p class="vote-again"><a href="/">もう一度投票する</a></p>
+</body>
+</html>

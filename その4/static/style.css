@@ -1,0 +1,221 @@
+<@charset "UTF-8";>
+body {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    background-color: #444444;
+    color: #333;
+    text-align: center;
+    margin: 0;
+    padding: 50px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+label {
+    font-size: 20px;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+
+input[type="text"] {
+    width: 200px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+/* ボタンのスタイルを変更 */
+button[type="submit"] {
+    background-color: #008080;
+    color: #fff;
+    width: 200px;
+    height: 60px;
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    border-radius: 25px;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+    display: block;
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+button[type="submit"]:hover {
+    background-color: #005959;
+    box-shadow: 4px 4px 10px rgba(0,0,0,0.5);
+    transform: translateY(-2px);
+}
+
+h1 {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 36px;
+    text-shadow: 2px 2px 2px rgba(0,0,0,0.3);
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+li {
+    width: 350px;
+    height: 350px;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #008080;
+    padding: 20px;
+    background-size: cover;
+}
+
+/* リストアイテムのホバー時のスタイルを変更 */
+li:hover {
+    transform: translateY(-5px);
+    box-shadow: 4px 4px 10px rgba(0,0,0,0.5);
+}
+
+container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 50px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+input[type="range"] {
+    width: 300px;
+    height: 25px;
+    margin-bottom: 10px;
+    background-color: #f2f2f2;
+    outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background-color: #008080;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background-color: #008080;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* 投票結果のスタイル */
+result {
+    margin: 0 auto 40px;
+    max-width: 600px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+}
+
+/* 場所名のスタイル */
+place {
+    color: #333;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+/* ランクコンテナのスタイル */
+.rank-container {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 20px auto;
+    max-width: 400px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+}
+
+/* ランクのスタイル */
+.rank {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* 中央揃え */
+    font-size: 1.5em;
+    margin: 5px 0;
+    text-align: center;
+    padding: 0px;
+}
+
+.rank .rank-number {
+    width: 10%;
+    margin-right: 15px;
+}
+
+.rank .place-name {
+    color: #333;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.rank .place-points {
+    width: 20%;
+    color: red;
+    font-weight: bold;
+}
+
+
+/* マップのコンテナのスタイル */
+#map-container {
+    margin: 40px auto;
+    max-width: 800px;
+    border-radius: 4px;
+    overflow: hidden;
+    border: 5px solid #ddd;
+}
+
+/* 「もう一度投票する」のスタイル */
+.vote-again {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 1.2em;
+    color: #999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* リンクのスタイル */
+a {
+    color: #3498db;
+    text-decoration: none;
+    border-bottom: 2px solid #3498db;
+}
+
+/* リンクにマウスを乗せたときのスタイル */
+a:hover {
+    background-color: #3498db;
+    color: #fff;
+}
+
+

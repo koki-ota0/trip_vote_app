@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>都道府県別投票結果</h1>
+    <table>
+        <tr>
+            <th>都道府県</th>
+            {% for candidate in candidates %}
+                <th>{{ candidate }}</th>
+            {% endfor %}
+        </tr>
+        {% for prefecture, results in prefecture_results.items() %}
+            <tr>
+                <td>{{ prefecture }}</td>
+                {% for candidate in candidates %}
+                    <td>{{ results[candidate] if candidate in results else 0 }}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

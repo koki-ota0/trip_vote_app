@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>トリッププラン</h1>
+
+  {% for category, locations in location_dict.items() %}
+    <h2>{{ category }}</h2>
+    <ul>
+      {% for location in locations %}
+        <li>{{ location }}</li>
+      {% endfor %}
+    </ul>
+  {% endfor %}
+{% endblock %}

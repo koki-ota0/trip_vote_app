@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>目的地周辺の情報を取得するWebアプリ</title>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"
+      async
+      defer
+    ></script>
+    <script>
+      let map, infoWindow;
+
+      function initMap() {
+        map = new google.maps.Map(document.getElementById("map"), {
+          center: { lat: -34.397, lng: 150.644 },
+          zoom: 6,
+        });
+        infoWindow = new google.maps.InfoWindow();
+      }
+
+      function getCurrentLocation() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(
+            (position) => {
+              const pos = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude,
+              };
+              infoWindow.setPosition(pos);
+              infoWindow.setContent("現在地");
+              infoWindow.open(map);
+              map.setCenter(pos);
+            },
+            () => {
+              handleLocationError(true, infoWindow, map.getCenter());
+            }
+          );
+        } else {
+          handleLocationError(false, infoWindow, map.getCenter());
+        }
+      }
+
+      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(
+          browserHasGeolocation
+            ? "位置情報の取得に失敗しました。"
+            : "お使いのブラウザは位置情報に対応していません。"
+        );
+        infoWindow.open(map);
+      }
+
+      function searchNearby() {
+        const request = {
+          location: map.getCenter(),
+          radius: "500",
+          type: ["restaurant"],
+        };
+        const service = new google.maps.places.PlacesService(map);
+        service.nearbySearch(request, (results, status) => {
+          if (status === google.maps.places.PlacesServiceStatus.OK) {
+            for (let i = 0; i < results.length; i++) {
+              createMarker(results[i]);
+            }
+          }
+        });
+      }
+
+      function createMarker(place) {
+        const marker = new google.maps.Marker({
+          map,
+          position: place.geometry.location,
+        });
+        google.maps.event.addListener(marker, "click", () => {
+          infoWindow.setContent(place.name);
+          infoWindow.open(map, marker);
+        });
+      }
+    </script>
+    <style>
+      #map {
+        height: 400px;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>目的地周辺の情報を取得するWebアプリ</h1>
+    <div id="map"></div>
+    <button onclick="getCurrentLocation()">現在地を表示する</button>
+    <button onclick="searchNearby()">周辺の飲食店を検索する</button>
+  </body>
+</html>

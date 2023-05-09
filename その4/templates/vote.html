@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+    <title>旅行先投票</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>行きたい場所投票</h1>
+        <form action="/vote" method="post">
+            <ul>
+            {% for place in prefectures %}
+                <li style="background-image: url({{ url_for('static', filename=place[0]+'.png') }})">
+                  <label style="font-size: 36px; color: #eeeeee" for="vote">{{ place[0] }}</label>
+                  <input type="range" id="{{ place[0] }}" name="{{ place[0] }}" min="-3" max="3" value="0">
+                </li>
+            {% endfor %}
+            </ul>
+            <button type="submit">投票する</button>
+        </form>
+    </div>
+    <br>
+</body>
+</html>

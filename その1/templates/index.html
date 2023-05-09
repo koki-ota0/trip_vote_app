@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Vote</title>
+    <style>
+      label {
+        font-size: 1.2em;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Vote</h1>
+    <form action="{{ url_for('vote') }}" method="post">
+      {% for candidate in candidates %}
+        <p>{{ candidate }}:</p>
+        <input type="radio" name="{{ candidate }}" value="-3" id="{{ candidate }}-3">
+        <label for="{{ candidate }}-3">-3</label>
+        <input type="radio" name="{{ candidate }}" value="-1" id="{{ candidate }}-1">
+        <label for="{{ candidate }}-1">-1</label>
+        <input type="radio" name="{{ candidate }}" value="0" id="{{ candidate }}0" checked>
+        <label for="{{ candidate }}0">0</label>
+        <input type="radio" name="{{ candidate }}" value="1" id="{{ candidate }}1">
+        <label for="{{ candidate }}1">1</label>
+        <input type="radio" name="{{ candidate }}" value="3" id="{{ candidate }}3">
+        <label for="{{ candidate }}3">3</label>
+      {% endfor %}
+      <br><br>
+      <input type="submit" value="Submit">
+    </form>
+  </body>
+</html>

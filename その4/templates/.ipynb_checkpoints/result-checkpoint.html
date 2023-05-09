@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>投票結果</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>投票結果</h1>
+    <div class="rank-container">
+    {% for i, top_place in sort_place[:5] %}
+        <div class="rank">
+            <span class="rank-number">{{ i+1 }}位</span>
+            <span class="place-name">{{ top_place[0] }}</span>
+            <span class="place-points">{{ top_place[3] }}点</span>
+        </div>
+    {% endfor %}
+    </div>
+
+    <div id="map-container">{{ map | safe }}</div>
+    <p class="vote-again"><a href="/vote">もう一度投票する</a></p>
+    <br>
+</body>
+</html>
